@@ -743,6 +743,25 @@ footer.site-footer {
 .contact-tile p { margin: 0; font-size: 0.88rem; color: var(--text-muted); }
 .contact-tile a { color: var(--deep-blue); font-weight: 600; }
 
+/* ---------- Careers & Opportunities ---------- */
+.career-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px; margin-bottom: 14px;
+}
+.career-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.deadline-badge {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .4px;
+  padding: 4px 11px; border-radius: 20px; flex-shrink: 0; white-space: nowrap;
+}
+.deadline-badge.open { background: #E4F5EC; color: var(--green); }
+.deadline-badge.soon { background: #FDF2E0; color: #B7791F; }
+.deadline-badge.closed { background: #FBEAEA; color: #B3261E; }
+.career-card h3 { margin: 8px 0 4px; font-size: 1.02rem; color: var(--text); }
+.career-org { font-size: 0.86rem; color: var(--green); font-weight: 600; margin-bottom: 8px; }
+.career-card p.desc { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+.career-meta { margin-top: 12px; display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.85rem; color: var(--text-muted); }
+
+
 
 
 
