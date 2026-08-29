@@ -795,6 +795,28 @@ footer.site-footer {
 .contact-form-box textarea { resize: vertical; min-height: 110px; }
 .contact-form-box button { margin-top: 20px; }
 
+/* ---------- Membership Application Form ---------- */
+.apply-step {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 24px; margin-bottom: 20px;
+}
+.apply-step h3 {
+  margin: 0 0 4px; font-size: 1.02rem; color: var(--deep-blue-dark);
+  display: flex; align-items: center; gap: 10px;
+}
+.apply-step .step-num {
+  width: 28px; height: 28px; border-radius: 50%; background: var(--deep-blue); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
+}
+.apply-step .step-note { font-size: 0.84rem; color: var(--text-muted); margin: 4px 0 16px 38px; }
+.form-row { display: grid; gap: 14px; grid-template-columns: 1fr; margin-top: 14px; }
+@media (min-width: 700px) { .form-row.two-col { grid-template-columns: 1fr 1fr; } }
+.form-row label { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 6px; display: block; }
+.form-row input, .form-row select {
+  width: 100%; padding: 12px 14px; border-radius: var(--radius); border: 1.5px solid var(--border); font-size: 0.95rem;
+}
+
+
 
 
 
