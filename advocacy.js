@@ -31,7 +31,7 @@ async function loadAdvocacy() {
 
   if (error) {
     console.error("Advocacy load failed:", error);
-    list.innerHTML = `<p class="card-empty">Something went wrong loading advocacy items.</p>`;
+    list.innerHTML = `<p class="card-empty">Debug error: ${escapeHtmlA(error.message || JSON.stringify(error))}</p>`;
     return;
   }
 
