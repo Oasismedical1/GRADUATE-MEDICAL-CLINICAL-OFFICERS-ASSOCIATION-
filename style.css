@@ -657,6 +657,30 @@ footer.site-footer {
 .cal-cell.has-event { background: #E4F5EC; border-color: var(--green); font-weight: 700; cursor: pointer; }
 .cal-cell .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); margin-top: 2px; }
 
+/* ---------- Research & Innovation Centre ---------- */
+.awards-strip {
+  display: grid; gap: 16px; grid-template-columns: 1fr; margin-bottom: 40px;
+}
+@media (min-width: 700px) { .awards-strip { grid-template-columns: repeat(3, 1fr); } }
+.award-card {
+  background: linear-gradient(135deg, var(--deep-blue) 0%, var(--deep-blue-dark) 100%);
+  color: #fff; border-radius: var(--radius); padding: 20px;
+}
+.award-card .award-tag { font-size: 0.72rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+.award-card h4 { margin: 8px 0 6px; font-size: 0.98rem; }
+.award-card p { margin: 0; font-size: 0.84rem; color: #CFE0EA; }
+
+.research-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px; margin-bottom: 14px;
+}
+.research-card .card-category { margin-bottom: 8px; }
+.research-card h3 { margin: 0 0 6px; font-size: 1.02rem; color: var(--text); }
+.research-card .research-authors { font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-bottom: 8px; }
+.research-card p.abstract { margin: 0; font-size: 0.9rem; color: var(--text); }
+.research-card .research-meta { margin-top: 12px; display: flex; gap: 14px; align-items: center; font-size: 0.82rem; color: var(--text-muted); flex-wrap: wrap; }
+
+
 
 
 
