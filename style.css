@@ -272,3 +272,148 @@ footer.site-footer {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
+
+/* ---------- About page: intro banner ---------- */
+.page-hero {
+  background: linear-gradient(135deg, var(--deep-blue) 0%, var(--deep-blue-dark) 100%);
+  color: #fff;
+  padding: 44px 0 40px;
+}
+.page-hero .section-eyebrow { color: var(--gold); }
+.page-hero h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 8px 0 0; }
+
+/* ---------- Page sub-nav (jump links) ---------- */
+.subnav {
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 64px;
+  z-index: 40;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.subnav .container { display: flex; gap: 4px; padding-top: 0; padding-bottom: 0; }
+.subnav a {
+  padding: 14px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 3px solid transparent;
+  display: inline-block;
+}
+.subnav a:hover { color: var(--deep-blue); }
+
+/* ---------- Vision / Mission cards ---------- */
+.vm-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 700px) { .vm-grid { grid-template-columns: 1fr 1fr; } }
+.vm-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 26px;
+}
+.vm-card h3 { margin: 0 0 10px; color: var(--deep-blue-dark); font-size: 1.1rem; }
+.vm-card p { margin: 0; color: var(--text); }
+
+/* ---------- Core values ---------- */
+.values-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 700px) { .values-grid { grid-template-columns: repeat(4, 1fr); } }
+.value-chip {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 14px;
+  text-align: center;
+  font-weight: 700;
+  color: var(--deep-blue);
+  font-size: 0.92rem;
+}
+
+/* ---------- Objectives ---------- */
+.objectives-list { list-style: none; margin: 0; padding: 0; counter-reset: obj; }
+.objectives-list li {
+  counter-increment: obj;
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.objectives-list li::before {
+  content: counter(obj);
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--deep-blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ---------- Leadership ---------- */
+.leadership-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 700px) { .leadership-grid { grid-template-columns: repeat(3, 1fr); } }
+.leader-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  text-align: center;
+}
+.leader-photo {
+  width: 96px; height: 96px; border-radius: 50%;
+  background: var(--bg-soft);
+  border: 3px solid var(--gold);
+  margin: 0 auto 14px;
+}
+.leader-card h3 { margin: 0 0 4px; font-size: 1rem; color: var(--text); }
+.leader-position { color: var(--green); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: .4px; }
+.leader-quals { color: var(--text-muted); font-size: 0.82rem; margin-top: 6px; }
+.leader-bio { color: var(--text-muted); font-size: 0.86rem; margin-top: 10px; }
+
+/* ---------- Org chart ---------- */
+.org-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.org-tier {
+  background: #fff;
+  border: 2px solid var(--deep-blue);
+  border-radius: var(--radius);
+  padding: 12px 22px;
+  font-weight: 700;
+  color: var(--deep-blue-dark);
+  text-align: center;
+  font-size: 0.92rem;
+  min-width: 220px;
+}
+.org-tier.top { background: var(--deep-blue); color: #fff; }
+.org-connector {
+  width: 2px; height: 24px; background: var(--border);
+}
+
+/* ---------- Governance / downloads ---------- */
+.doc-list { display: grid; gap: 12px; }
+.doc-row {
+  display: flex; align-items: center; justify-content: space-between;
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.doc-row .doc-name { font-weight: 600; color: var(--text); }
+.doc-row .doc-meta { font-size: 0.82rem; color: var(--text-muted); }
+
