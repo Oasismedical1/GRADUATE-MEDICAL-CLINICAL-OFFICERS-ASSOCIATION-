@@ -680,6 +680,26 @@ footer.site-footer {
 .research-card p.abstract { margin: 0; font-size: 0.9rem; color: var(--text); }
 .research-card .research-meta { margin-top: 12px; display: flex; gap: 14px; align-items: center; font-size: 0.82rem; color: var(--text-muted); flex-wrap: wrap; }
 
+/* ---------- Advocacy Centre ---------- */
+.advocacy-card {
+  background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--deep-blue);
+  border-radius: var(--radius); padding: 22px; margin-bottom: 14px;
+}
+.advocacy-card.status-achieved { border-left-color: var(--green); }
+.advocacy-card.status-planned { border-left-color: var(--gold); }
+.advocacy-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+.advocacy-status {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .4px;
+  padding: 4px 11px; border-radius: 20px; flex-shrink: 0;
+}
+.advocacy-status.achieved { background: #E4F5EC; color: var(--green); }
+.advocacy-status.ongoing { background: #E6F0F7; color: var(--deep-blue); }
+.advocacy-status.planned { background: #FDF2E0; color: #B7791F; }
+.advocacy-card h3 { margin: 8px 0 6px; font-size: 1.02rem; color: var(--text); }
+.advocacy-card p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+.advocacy-meta { margin-top: 12px; font-size: 0.82rem; color: var(--text-muted); }
+
+
 
 
 
