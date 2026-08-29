@@ -25,7 +25,7 @@ async function loadCareers() {
 
   if (error) {
     console.error("Careers load failed:", error);
-    list.innerHTML = `<p class="card-empty">Something went wrong loading opportunities.</p>`;
+    list.innerHTML = `<p class="card-empty">Debug error: ${escapeHtmlC(error.message || JSON.stringify(error))}</p>`;
     return;
   }
 
