@@ -761,6 +761,41 @@ footer.site-footer {
 .career-card p.desc { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
 .career-meta { margin-top: 12px; display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.85rem; color: var(--text-muted); }
 
+/* ---------- Contact Centre ---------- */
+.contact-info-grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-bottom: 34px; }
+@media (min-width: 700px) { .contact-info-grid { grid-template-columns: repeat(3, 1fr); } }
+.contact-info-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; text-align: center;
+}
+.contact-info-card .ci-icon { font-size: 1.5rem; margin-bottom: 10px; }
+.contact-info-card h4 { margin: 0 0 8px; font-size: 0.95rem; color: var(--deep-blue-dark); }
+.contact-info-card p { margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+.contact-info-card a { color: var(--deep-blue); font-weight: 600; }
+
+.map-embed { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+.map-embed iframe { width: 100%; height: 320px; border: 0; display: block; }
+
+.directory-list { display: grid; gap: 10px; }
+.directory-row {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px;
+}
+.directory-row .dept-name { font-weight: 600; color: var(--text); }
+.directory-row .dept-role { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; }
+
+.contact-form-box {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 26px;
+}
+.contact-form-box label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 6px; margin-top: 16px; }
+.contact-form-box label:first-child { margin-top: 0; }
+.contact-form-box input, .contact-form-box select, .contact-form-box textarea {
+  width: 100%; padding: 12px 14px; border-radius: var(--radius); border: 1.5px solid var(--border);
+  font-size: 0.95rem; font-family: inherit;
+}
+.contact-form-box textarea { resize: vertical; min-height: 110px; }
+.contact-form-box button { margin-top: 20px; }
+
+
 
 
 
