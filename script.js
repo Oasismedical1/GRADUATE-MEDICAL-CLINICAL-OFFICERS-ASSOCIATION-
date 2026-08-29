@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadStats();
   loadNews();
   loadEvents();
+  loadLeadership();
   wireNavToggle();
   wireNewsletterForm();
 });
@@ -110,7 +111,40 @@ async function loadEvents() {
     .join("");
 }
 
-function wireNewsletterForm() {
+async function loadLeadership() {
+  const grid = document.getElementById("leadership-grid");
+  if (!grid) return;
+  const { data, error } = await supabaseClient
+    .from("leadership")
+    .select("full_name,position,photo_url,bio,qualifications")
+    .eq("is_active", true)
+    .order("display_order");
+
+  if (error) {
+    console.error("Leadership load failed:", error);
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    grid.innerHTML = `<p class="card-empty">Leadership profiles coming soon — add rows to the "leadership" table in Supabase.</p>`;
+    return;
+  }
+
+  grid.innerHTML = data
+    .map(
+      (p) => `
+      <div class="leader-card">
+        <div class="leader-photo" style="${p.photo_url ? `background-image:url('${p.photo_url}');background-size:cover;background-position:center;` : ""}"></div>
+        <h3>${escapeHtml(p.full_name)}</h3>
+        <div class="leader-position">${escapeHtml(p.position)}</div>
+        ${p.qualifications ? `<div class="leader-quals">${escapeHtml(p.qualifications)}</div>` : ""}
+        ${p.bio ? `<p class="leader-bio">${escapeHtml(p.bio)}</p>` : ""}
+      </div>`
+    )
+    .join("");
+}
+
+
   const form = document.getElementById("newsletter-form");
   if (!form) return;
   form.addEventListener("submit", async (e) => {
