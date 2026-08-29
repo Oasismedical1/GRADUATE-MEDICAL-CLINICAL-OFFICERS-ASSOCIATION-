@@ -1,0 +1,495 @@
+/* ============================================================
+   GMCOA-U ADVOCACY CENTRE
+   Chapter 6.15
+============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1f2937;
+    background: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: min(1180px, 92%);
+    margin: auto;
+}
+
+
+/* HEADER */
+
+.site-header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-inner {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+}
+
+.logo-mark {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #0f766e;
+    color: white;
+}
+
+.logo-text {
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.main-nav a {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: #0f766e;
+}
+
+.mobile-menu-btn {
+    display: none;
+    border: 0;
+    background: transparent;
+    font-size: 25px;
+}
+
+
+/* HERO */
+
+.advocacy-hero {
+    background:
+        linear-gradient(
+            135deg,
+            #0f766e,
+            #115e59
+        );
+
+    color: white;
+    padding: 90px 0;
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #0f766e;
+}
+
+.advocacy-hero .eyebrow {
+    color: #ccfbf1;
+}
+
+.hero-content h1 {
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.05;
+    margin: 0 0 20px;
+}
+
+.hero-content p {
+    font-size: 20px;
+    max-width: 650px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+
+/* BUTTONS */
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #0f766e;
+    color: white;
+}
+
+.advocacy-hero .btn-primary {
+    background: white;
+    color: #0f766e;
+}
+
+.btn-outline {
+    border-color: rgba(255,255,255,.7);
+    color: white;
+}
+
+
+/* STATS */
+
+.stats-section {
+    padding: 30px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 20px;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0f766e;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+
+/* SECTIONS */
+
+.section {
+    padding: 80px 0;
+}
+
+.section-alt {
+    background: #f8fafc;
+}
+
+.section-heading {
+    margin-bottom: 35px;
+    max-width: 750px;
+}
+
+.section-heading h2 {
+    font-size: 36px;
+    margin: 0 0 12px;
+}
+
+
+/* FILTERS */
+
+.filters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.filters input,
+.filters select {
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    font: inherit;
+}
+
+.filters input {
+    flex: 1;
+    min-width: 240px;
+}
+
+
+/* INITIATIVES */
+
+.initiative-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.initiative-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    transition: .2s ease;
+}
+
+.initiative-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.initiative-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.initiative-card p {
+    color: #6b7280;
+}
+
+.badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.badge {
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.badge.priority {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+
+/* PROGRESS */
+
+.progress-wrapper {
+    margin: 20px 0;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.progress {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #0f766e;
+}
+
+
+/* DOCUMENTS */
+
+.document-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.document-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 22px;
+    background: white;
+}
+
+.document-type {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #0f766e;
+}
+
+.document-card h3 {
+    margin: 8px 0;
+}
+
+
+/* ENGAGEMENTS */
+
+.engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.engagement-card {
+    background: white;
+    padding: 22px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+}
+
+.engagement-date {
+    color: #0f766e;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+
+/* IMPACT */
+
+.impact-section {
+    padding: 90px 0;
+    background: #ecfdf5;
+}
+
+.impact-content {
+    max-width: 760px;
+}
+
+.impact-content h2 {
+    font-size: 40px;
+    margin-top: 0;
+}
+
+
+/* LOADING */
+
+.loading {
+    padding: 30px;
+    text-align: center;
+    color: #6b7280;
+}
+
+
+/* EMPTY */
+
+.empty-state {
+    padding: 40px;
+    text-align: center;
+    color: #6b7280;
+    background: white;
+    border: 1px dashed #d1d5db;
+    border-radius: 10px;
+}
+
+
+/* FOOTER */
+
+.site-footer {
+    background: #111827;
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-grid h3,
+.footer-grid h4 {
+    margin-top: 0;
+}
+
+.footer-grid a {
+    display: block;
+    margin-bottom: 8px;
+    color: #d1d5db;
+}
+
+.footer-bottom {
+    border-top: 1px solid #374151;
+    margin-top: 40px;
+    padding-top: 20px;
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .main-nav {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .initiative-grid,
+    .document-grid,
+    .engagement-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .initiative-grid,
+    .document-grid,
+    .engagement-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .section {
+        padding: 55px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
