@@ -417,3 +417,65 @@ footer.site-footer {
 .doc-row .doc-name { font-weight: 600; color: var(--text); }
 .doc-row .doc-meta { font-size: 0.82rem; color: var(--text-muted); }
 
+/* ---------- Member Verification Portal ---------- */
+.verify-box {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: 0 12px 32px rgba(11,61,98,.10);
+}
+.verify-form { display: flex; gap: 10px; flex-wrap: wrap; }
+.verify-form input {
+  flex: 1;
+  min-width: 220px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  font-size: 1rem;
+}
+.verify-form input:focus { outline: none; border-color: var(--green); }
+.verify-hint { font-size: 0.84rem; color: var(--text-muted); margin-top: 10px; }
+
+.verify-result {
+  margin-top: 24px;
+}
+.verify-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.verify-card + .verify-card { margin-top: 14px; }
+.verify-badge {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0;
+}
+.verify-badge.active { background: #E4F5EC; color: var(--green); }
+.verify-badge.expired { background: #FBEAEA; color: #B3261E; }
+.verify-badge.suspended { background: #FDF2E0; color: #B7791F; }
+.verify-name { font-weight: 700; font-size: 1.05rem; color: var(--text); }
+.verify-status {
+  display: inline-block; margin-top: 4px;
+  font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .4px;
+  padding: 3px 10px; border-radius: 20px;
+}
+.verify-status.active { background: #E4F5EC; color: var(--green); }
+.verify-status.expired { background: #FBEAEA; color: #B3261E; }
+.verify-status.suspended { background: #FDF2E0; color: #B7791F; }
+.verify-meta { margin-top: 10px; font-size: 0.88rem; color: var(--text-muted); }
+.verify-meta span { display: inline-block; margin-right: 16px; }
+.verify-empty {
+  text-align: center; padding: 30px 10px; color: var(--text-muted);
+}
+.privacy-note {
+  display: flex; gap: 10px; align-items: flex-start;
+  background: var(--bg-soft); border-radius: var(--radius);
+  padding: 16px 18px; margin-top: 30px;
+  font-size: 0.86rem; color: var(--text-muted);
+}
+
+
