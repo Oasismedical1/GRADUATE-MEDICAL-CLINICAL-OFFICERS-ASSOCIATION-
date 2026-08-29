@@ -77,13 +77,10 @@ header.site-header {
   letter-spacing: .2px;
 }
 .nav-brand .mark {
-  width: 36px; height: 36px;
+  width: 40px; height: 40px;
   border-radius: 50%;
-  background: var(--gold);
-  color: var(--deep-blue-dark);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 800;
-  font-size: 0.9rem;
+  object-fit: cover;
+  background: #fff;
 }
 .nav-links {
   display: none;
@@ -184,7 +181,9 @@ header.site-header {
   width: 180px; height: 180px; border-radius: 50%;
   background: var(--bg-soft); border: 4px solid var(--gold);
   margin: 0 auto;
+  overflow: hidden;
 }
+.president-photo img { width: 100%; height: 100%; object-fit: cover; }
 .president blockquote {
   margin: 0; font-size: 1.1rem; color: var(--text);
   border-left: 4px solid var(--green); padding-left: 18px;
