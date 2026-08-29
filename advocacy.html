@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Advocacy Centre | GMCOA-U</title>
+
+    <meta name="description"
+          content="GMCOA-U Advocacy Centre - Advancing the interests of Graduate Medical Clinical Officers and strengthening healthcare delivery in Uganda.">
+
+    <link rel="stylesheet" href="advocacy.css">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+    <div class="container header-inner">
+
+        <a href="index.html" class="logo">
+            <span class="logo-mark">GMCOA</span>
+            <span class="logo-text">
+                Graduate Medical Clinical Officers<br>
+                Association of Uganda
+            </span>
+        </a>
+
+        <nav class="main-nav">
+
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="membership.html">Membership</a>
+            <a href="cpd.html">CPD</a>
+            <a href="research.html">Research</a>
+
+            <a href="advocacy.html" class="active">
+                Advocacy
+            </a>
+
+            <a href="events.html">Events</a>
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="advocacy-hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <span class="eyebrow">
+                GMCOA-U ADVOCACY
+            </span>
+
+            <h1>
+                Advocacy Centre
+            </h1>
+
+            <p>
+                Advancing the interests of Graduate Medical Clinical Officers
+                and strengthening healthcare delivery in Uganda.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="#initiatives" class="btn btn-primary">
+                    View Advocacy Initiatives
+                </a>
+
+                <a href="#documents" class="btn btn-outline">
+                    Policy Documents
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADVOCACY STATISTICS
+========================================================= -->
+
+<section class="stats-section">
+
+    <div class="container">
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-number" id="statInitiatives">0</div>
+                <div class="stat-label">Advocacy Initiatives</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number" id="statActive">0</div>
+                <div class="stat-label">Active Initiatives</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number" id="statDocuments">0</div>
+                <div class="stat-label">Policy Documents</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number" id="statEngagements">0</div>
+                <div class="stat-label">Stakeholder Engagements</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FEATURED ADVOCACY
+========================================================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                OUR WORK
+            </span>
+
+            <h2>
+                Featured Advocacy Initiatives
+            </h2>
+
+            <p>
+                Follow the major issues and initiatives being advanced
+                by GMCOA-U.
+            </p>
+
+        </div>
+
+        <div id="featuredInitiatives" class="initiative-grid">
+
+            <div class="loading">
+                Loading advocacy initiatives...
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ALL INITIATIVES
+========================================================= -->
+
+<section class="section section-alt" id="initiatives">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                ADVOCACY INITIATIVES
+            </span>
+
+            <h2>
+                Our Advocacy Work
+            </h2>
+
+        </div>
+
+
+        <!-- SEARCH + FILTER -->
+
+        <div class="filters">
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search advocacy initiatives..."
+            >
+
+            <select id="statusFilter">
+
+                <option value="">All statuses</option>
+
+                <option value="proposed">Proposed</option>
+
+                <option value="under_preparation">
+                    Under Preparation
+                </option>
+
+                <option value="active">Active</option>
+
+                <option value="stakeholder_engagement">
+                    Stakeholder Engagement
+                </option>
+
+                <option value="awaiting_government_response">
+                    Awaiting Government Response
+                </option>
+
+                <option value="partially_achieved">
+                    Partially Achieved
+                </option>
+
+                <option value="achieved">
+                    Achieved
+                </option>
+
+                <option value="closed">Closed</option>
+
+            </select>
+
+            <select id="priorityFilter">
+
+                <option value="">All priorities</option>
+
+                <option value="urgent">Urgent</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+
+            </select>
+
+        </div>
+
+
+        <div id="initiativesGrid" class="initiative-grid">
+
+            <div class="loading">
+                Loading initiatives...
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DOCUMENT LIBRARY
+========================================================= -->
+
+<section class="section" id="documents">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                KNOWLEDGE CENTRE
+            </span>
+
+            <h2>
+                Advocacy Documents
+            </h2>
+
+            <p>
+                Access published GMCOA-U policy documents,
+                position statements and advocacy materials.
+            </p>
+
+        </div>
+
+
+        <div class="filters">
+
+            <input
+                type="search"
+                id="documentSearch"
+                placeholder="Search documents..."
+            >
+
+            <select id="documentTypeFilter">
+
+                <option value="">All document types</option>
+
+                <option value="position_statement">
+                    Position Statements
+                </option>
+
+                <option value="policy_brief">
+                    Policy Briefs
+                </option>
+
+                <option value="memorandum">
+                    Memoranda
+                </option>
+
+                <option value="press_statement">
+                    Press Statements
+                </option>
+
+                <option value="report">
+                    Reports
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div id="documentsGrid" class="document-grid">
+
+            <div class="loading">
+                Loading documents...
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STAKEHOLDER ENGAGEMENTS
+========================================================= -->
+
+<section class="section section-alt">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                ENGAGEMENT
+            </span>
+
+            <h2>
+                Stakeholder Engagements
+            </h2>
+
+        </div>
+
+
+        <div id="engagementsGrid" class="engagement-grid">
+
+            <div class="loading">
+                Loading engagements...
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADVOCACY IMPACT
+========================================================= -->
+
+<section class="impact-section">
+
+    <div class="container">
+
+        <div class="impact-content">
+
+            <span class="eyebrow">
+                OUR PURPOSE
+            </span>
+
+            <h2>
+                Advocacy for Better Healthcare
+            </h2>
+
+            <p>
+                GMCOA-U advocates for professional development,
+                recognition, appropriate deployment and effective
+                participation of Graduate Medical Clinical Officers
+                in Uganda's healthcare system.
+            </p>
+
+            <a href="contact.html" class="btn btn-primary">
+                Engage With GMCOA-U
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>GMCOA-U</h3>
+
+                <p>
+                    Graduate Medical Clinical Officers
+                    Association of Uganda.
+                </p>
+            </div>
+
+            <div>
+                <h4>Advocacy</h4>
+
+                <a href="#initiatives">
+                    Initiatives
+                </a>
+
+                <a href="#documents">
+                    Documents
+                </a>
+            </div>
+
+            <div>
+                <h4>Quick Links</h4>
+
+                <a href="research.html">Research</a>
+                <a href="events.html">Events</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            © <span id="currentYear"></span>
+            GMCOA-U. All Rights Reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="advocacy.js"></script>
+
+</body>
+</html>
