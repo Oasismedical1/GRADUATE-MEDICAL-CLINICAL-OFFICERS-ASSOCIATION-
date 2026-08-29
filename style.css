@@ -567,5 +567,26 @@ footer.site-footer {
 .cta-banner h2 { margin: 0 0 10px; font-size: 1.35rem; }
 .cta-banner p { color: #CFE0EA; margin: 0 0 20px; }
 
+/* ---------- News Centre ---------- */
+.news-filters {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 26px;
+}
+.news-filters select, .news-filters input {
+  padding: 11px 14px; border-radius: var(--radius); border: 1.5px solid var(--border);
+  font-size: 0.9rem; background: #fff;
+}
+.news-filters input[type="search"] { flex: 1; min-width: 180px; }
+.news-count { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; }
+.news-card-full {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.news-card-full .card-media { height: 160px; background: var(--bg-soft); }
+.news-card-full .card-body { padding: 20px; }
+.news-date { font-size: 0.78rem; color: var(--text-muted); margin-top: 8px; }
+.load-more-wrap { text-align: center; margin-top: 30px; }
+
+
 
 
