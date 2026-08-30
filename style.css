@@ -936,6 +936,38 @@ footer.site-footer {
 .tx-table .amt-expenditure { color: #B3261E; font-weight: 700; }
 .tx-table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 8px; }
 
+/* ---------- CPD Virtual Academy ---------- */
+.course-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px; margin-bottom: 14px;
+}
+.course-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.cpd-points-badge {
+  background: var(--gold); color: var(--deep-blue-dark); font-weight: 800; font-size: 0.78rem;
+  padding: 4px 12px; border-radius: 20px; white-space: nowrap;
+}
+.course-card h3 { margin: 8px 0 4px; font-size: 1.02rem; color: var(--text); }
+.course-format { font-size: 0.82rem; color: var(--green); font-weight: 600; margin-bottom: 8px; }
+.course-card p.desc { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+.course-meta { margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); }
+.course-card .btn { margin-top: 14px; }
+
+.enroll-modal-bg {
+  position: fixed; inset: 0; background: rgba(11,61,98,.6); display: none;
+  align-items: center; justify-content: center; z-index: 100; padding: 20px;
+}
+.enroll-modal-bg.open { display: flex; }
+.enroll-modal {
+  background: #fff; border-radius: var(--radius); padding: 26px; max-width: 420px; width: 100%;
+}
+.enroll-modal h3 { margin: 0 0 14px; }
+.enroll-modal label { display: block; font-size: 0.85rem; font-weight: 600; margin: 12px 0 5px; }
+.enroll-modal input {
+  width: 100%; padding: 11px 13px; border-radius: var(--radius); border: 1.5px solid var(--border); font-size: 0.9rem;
+}
+.enroll-modal .modal-actions { display: flex; gap: 10px; margin-top: 18px; }
+
+
 
 
 
