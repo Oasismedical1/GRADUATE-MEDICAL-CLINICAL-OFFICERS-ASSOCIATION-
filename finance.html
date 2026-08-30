@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Dashboard | GMCOA-U</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.png" alt="GMCOA-U logo" class="mark">
+      GMCOA-U Finance
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="admin.html">Applications</a>
+      <a href="index.html">Public Site</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="btn btn-outline" id="logout-btn" style="display:none;color:#fff;">Log Out</button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-eyebrow">Treasurer &amp; Secretariat Only</div>
+    <h1>Finance Dashboard</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div id="admin-login">
+      <div class="admin-login-box">
+        <h3 style="margin:0;">Admin Login</h3>
+        <form id="admin-login-form">
+          <label for="admin-email">Email</label>
+          <input id="admin-email" type="email" required>
+          <label for="admin-password">Password</label>
+          <input id="admin-password" type="password" required>
+          <button class="btn btn-primary" type="submit">Log In</button>
+        </form>
+        <p id="login-note" style="margin-top:12px;font-size:0.88rem;"></p>
+      </div>
+    </div>
+
+    <div id="admin-dashboard" style="display:none;">
+
+      <div class="finance-summary">
+        <div class="finance-card income">
+          <div class="fc-label">Total Income</div>
+          <div class="fc-value" id="total-income">—</div>
+        </div>
+        <div class="finance-card expenditure">
+          <div class="fc-label">Total Expenditure</div>
+          <div class="fc-value" id="total-expenditure">—</div>
+        </div>
+        <div class="finance-card balance">
+          <div class="fc-label">Current Balance</div>
+          <div class="fc-value" id="total-balance">—</div>
+        </div>
+      </div>
+
+      <div class="finance-forms">
+        <div class="finance-form-box">
+          <h3>Record Income</h3>
+          <form id="income-form">
+            <label>Source</label>
+            <select name="category" required>
+              <option>Membership Fees</option>
+              <option>CPD Revenue</option>
+              <option>Conference Revenue</option>
+              <option>Donations</option>
+              <option>Grants</option>
+              <option>Other Income</option>
+            </select>
+            <label>Description</label>
+            <input type="text" name="description" placeholder="e.g. 2026 subscription — John Doe">
+            <label>Amount (UGX)</label>
+            <input type="number" name="amount" min="0" step="1" required>
+            <label>Payment Method</label>
+            <select name="payment_method" required>
+              <option>Cash</option>
+              <option>Mobile Money</option>
+              <option>Bank Transfer</option>
+              <option>Cheque</option>
+              <option>Other</option>
+            </select>
+            <label>Membership Number <span style="font-weight:400;color:var(--text-muted);">(if a subscription payment)</span></label>
+            <input type="text" name="membership_number" placeholder="e.g. GMCOA/UG/2026/00458">
+            <label>Date</label>
+            <input type="date" name="transaction_date">
+            <button class="btn btn-primary" type="submit">Add Income</button>
+          </form>
+        </div>
+
+        <div class="finance-form-box">
+          <h3>Record Expenditure</h3>
+          <form id="expenditure-form">
+            <label>Category</label>
+            <select name="category" required>
+              <option>Office &amp; Administration</option>
+              <option>Events &amp; Conferences</option>
+              <option>CPD &amp; Training</option>
+              <option>Advocacy &amp; Communications</option>
+              <option>Salaries &amp; Allowances</option>
+              <option>Travel &amp; Transport</option>
+              <option>Other</option>
+            </select>
+            <label>Description</label>
+            <input type="text" name="description" placeholder="e.g. Venue hire — AGM 2026">
+            <label>Amount (UGX)</label>
+            <input type="number" name="amount" min="0" step="1" required>
+            <label>Payment Method</label>
+            <select name="payment_method" required>
+              <option>Cash</option>
+              <option>Mobile Money</option>
+              <option>Bank Transfer</option>
+              <option>Cheque</option>
+              <option>Other</option>
+            </select>
+            <label>Date</label>
+            <input type="date" name="transaction_date">
+            <button class="btn btn-primary" type="submit">Add Expenditure</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <div class="section-eyebrow">Ledger</div>
+        <h2>Recent Transactions</h2>
+      </div>
+      <div id="tx-list">
+        <p class="card-empty">Loading…</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="finance.js"></script>
+</body>
+</html>
