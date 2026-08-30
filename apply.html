@@ -135,7 +135,7 @@
       </div>
 
       <div class="apply-step">
-        <h3><span class="step-num">3</span> Membership &amp; Qualification</h3>
+        <h3><span class="step-num">3</span> Professional Information</h3>
         <div class="form-row two-col">
           <div>
             <label for="membership_category">Membership Category</label>
@@ -146,31 +146,136 @@
             </select>
           </div>
           <div>
-            <label for="qualification">Qualification</label>
+            <label for="qualification">Professional Qualification</label>
             <input id="qualification" name="qualification" type="text" placeholder="e.g. BCMCH">
           </div>
         </div>
         <div class="form-row two-col">
           <div>
-            <label for="year_of_graduation">Year of Graduation</label>
-            <input id="year_of_graduation" name="year_of_graduation" type="text">
-          </div>
-          <div>
             <label for="institution_attended">Institution Attended</label>
             <input id="institution_attended" name="institution_attended" type="text">
+          </div>
+          <div>
+            <label for="year_of_graduation">Graduation Year</label>
+            <input id="year_of_graduation" name="year_of_graduation" type="text">
+          </div>
+        </div>
+        <div class="form-row two-col">
+          <div>
+            <label for="registration_number">Registration Number</label>
+            <input id="registration_number" name="registration_number" type="text">
+          </div>
+          <div>
+            <label for="practising_licence_number">Practising Licence Number <span style="font-weight:400;color:var(--text-muted);">(if applicable)</span></label>
+            <input id="practising_licence_number" name="practising_licence_number" type="text">
+          </div>
+        </div>
+        <div class="form-row two-col">
+          <div>
+            <label for="employer">Employer</label>
+            <input id="employer" name="employer" type="text">
+          </div>
+          <div>
+            <label for="facility_level">Facility Level</label>
+            <input id="facility_level" name="facility_level" type="text" placeholder="e.g. Regional Referral Hospital">
+          </div>
+        </div>
+        <div class="form-row two-col">
+          <div>
+            <label for="employment_sector">Employment Sector</label>
+            <select id="employment_sector" name="employment_sector">
+              <option value="">Select…</option>
+              <option>Government</option>
+              <option>Private</option>
+              <option>NGO</option>
+              <option>Academic</option>
+              <option>Self-employed</option>
+            </select>
+          </div>
+          <div>
+            <label for="current_position">Current Position</label>
+            <input id="current_position" name="current_position" type="text">
+          </div>
+        </div>
+        <div class="form-row two-col">
+          <div>
+            <label for="years_of_experience">Years of Experience</label>
+            <input id="years_of_experience" name="years_of_experience" type="text">
+          </div>
+          <div>
+            <label for="areas_of_clinical_interest">Areas of Clinical Interest</label>
+            <input id="areas_of_clinical_interest" name="areas_of_clinical_interest" type="text">
+          </div>
+        </div>
+      </div>
+
+      <div class="apply-step">
+        <h3><span class="step-num">4</span> Document Upload</h3>
+        <p class="step-note">All optional except Passport Photograph. Accepted: JPG, PNG, PDF — max 5MB each.</p>
+        <div class="form-row two-col">
+          <div>
+            <label for="passport_photo">Passport Photograph</label>
+            <input id="passport_photo" name="passport_photo" type="file" accept="image/*,.pdf" required>
+          </div>
+          <div>
+            <label for="national_id">National ID</label>
+            <input id="national_id" name="national_id" type="file" accept="image/*,.pdf">
+          </div>
+        </div>
+        <div class="form-row two-col">
+          <div>
+            <label for="academic_certificates">Academic Certificates</label>
+            <input id="academic_certificates" name="academic_certificates" type="file" accept="image/*,.pdf">
+          </div>
+          <div>
+            <label for="degree_transcript">Degree Transcript</label>
+            <input id="degree_transcript" name="degree_transcript" type="file" accept="image/*,.pdf">
+          </div>
+        </div>
+        <div class="form-row two-col">
+          <div>
+            <label for="registration_certificate">Professional Registration Certificate</label>
+            <input id="registration_certificate" name="registration_certificate" type="file" accept="image/*,.pdf">
+          </div>
+          <div>
+            <label for="practising_licence">Practising Licence <span style="font-weight:400;color:var(--text-muted);">(if applicable)</span></label>
+            <input id="practising_licence" name="practising_licence" type="file" accept="image/*,.pdf">
           </div>
         </div>
         <div class="form-row">
           <div>
-            <label for="current_employment">Current Employment / Workplace</label>
-            <input id="current_employment" name="current_employment" type="text">
+            <label for="cv">Curriculum Vitae <span style="font-weight:400;color:var(--text-muted);">(optional)</span></label>
+            <input id="cv" name="cv" type="file" accept="image/*,.pdf">
           </div>
+        </div>
+      </div>
+
+      <div class="apply-step">
+        <h3><span class="step-num">5</span> Declaration</h3>
+        <div class="declaration-item">
+          <input type="checkbox" id="declaration_accurate" name="declaration_accurate" required>
+          <label for="declaration_accurate">I confirm that the information provided in this application is accurate to the best of my knowledge.</label>
+        </div>
+        <div class="declaration-item">
+          <input type="checkbox" id="declaration_agree_constitution" name="declaration_agree_constitution" required>
+          <label for="declaration_agree_constitution">I agree to abide by the GMCOA-U Constitution and Code of Conduct.</label>
+        </div>
+        <div class="declaration-item">
+          <input type="checkbox" id="declaration_consent_data" name="declaration_consent_data" required>
+          <label for="declaration_consent_data">I consent to the processing of my personal data in accordance with applicable data protection laws.</label>
         </div>
       </div>
 
       <button class="btn btn-primary" type="submit">Submit Application</button>
       <p id="apply-form-note" style="margin-top:14px;font-size:0.9rem;"></p>
     </form>
+
+    <div class="tracking-box" id="tracking-result" style="display:none;">
+      <div class="tn-label">Application Submitted</div>
+      <div class="tn-number" id="tracking-number-display"></div>
+      <p>Save this tracking number — you'll need it to check your application status. The Membership Committee will review your application and you'll be notified within 30 days, per the Constitution.</p>
+      <p style="margin-top:16px;"><a class="btn btn-primary" href="check-status.html">Check Application Status</a></p>
+    </div>
   </div>
 </section>
 
