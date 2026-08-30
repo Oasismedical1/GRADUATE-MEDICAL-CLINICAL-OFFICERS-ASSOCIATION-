@@ -815,6 +815,25 @@ footer.site-footer {
 .form-row input, .form-row select {
   width: 100%; padding: 12px 14px; border-radius: var(--radius); border: 1.5px solid var(--border); font-size: 0.95rem;
 }
+.form-row input[type="file"] { padding: 9px 10px; background: var(--bg-soft); }
+.file-hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+
+.declaration-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+}
+.declaration-item:last-child { border-bottom: none; }
+.declaration-item input[type="checkbox"] { margin-top: 3px; width: 18px; height: 18px; flex-shrink: 0; }
+.declaration-item label { font-size: 0.9rem; color: var(--text); font-weight: 400; margin: 0; }
+
+.tracking-box {
+  background: var(--deep-blue-dark); color: #fff; border-radius: var(--radius);
+  padding: 30px; text-align: center; margin-top: 20px;
+}
+.tracking-box .tn-label { font-size: 0.82rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .6px; }
+.tracking-box .tn-number { font-size: 1.6rem; font-weight: 800; margin: 10px 0; letter-spacing: 1px; }
+.tracking-box p { color: #CFE0EA; font-size: 0.9rem; margin: 0; }
+
 
 
 
