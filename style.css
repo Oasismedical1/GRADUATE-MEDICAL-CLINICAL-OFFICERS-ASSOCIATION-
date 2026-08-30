@@ -865,6 +865,47 @@ footer.site-footer {
 .status-pill.approved { background: #E4F5EC; color: var(--green); }
 .status-pill.rejected { background: #FBEAEA; color: #B3261E; }
 
+/* ---------- Digital Membership Card ---------- */
+.membership-card {
+  max-width: 420px; margin: 30px auto 0;
+  background: linear-gradient(135deg, var(--deep-blue) 0%, var(--deep-blue-dark) 100%);
+  border-radius: 16px; padding: 26px; color: #fff;
+  box-shadow: 0 16px 40px rgba(11,61,98,.28);
+  position: relative; overflow: hidden;
+}
+.membership-card::before {
+  content: ""; position: absolute; top: -40px; right: -40px;
+  width: 140px; height: 140px; border-radius: 50%;
+  background: rgba(201,154,46,.15);
+}
+.mc-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; position: relative; }
+.mc-header img { width: 44px; height: 44px; border-radius: 50%; background: #fff; }
+.mc-header .mc-org { font-weight: 800; font-size: 1rem; }
+.mc-header .mc-sub { font-size: 0.7rem; color: var(--gold); letter-spacing: .5px; }
+.mc-name { font-size: 1.25rem; font-weight: 800; margin: 6px 0 2px; position: relative; }
+.mc-number { font-size: 0.85rem; color: #CFE0EA; letter-spacing: .5px; position: relative; }
+.mc-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px;
+  margin: 18px 0; font-size: 0.82rem; position: relative;
+}
+.mc-grid .mc-label { color: var(--gold); font-size: 0.68rem; text-transform: uppercase; letter-spacing: .4px; }
+.mc-grid .mc-value { font-weight: 600; }
+.mc-footer { display: flex; justify-content: space-between; align-items: flex-end; position: relative; }
+.mc-status-badge {
+  background: rgba(255,255,255,.15); padding: 5px 12px; border-radius: 20px;
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+}
+.mc-qr { background: #fff; padding: 6px; border-radius: 8px; }
+.mc-qr canvas { display: block; }
+.card-actions { text-align: center; margin-top: 20px; }
+
+@media print {
+  header, .page-hero, footer, .card-actions, #status-form, .verify-hint { display: none !important; }
+  body { background: #fff; }
+  .membership-card { box-shadow: none; margin: 0 auto; }
+}
+
+
 
 
 
