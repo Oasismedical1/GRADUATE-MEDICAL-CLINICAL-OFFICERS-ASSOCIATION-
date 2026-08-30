@@ -833,3 +833,47 @@ footer.site-footer {
 .tracking-box .tn-label { font-size: 0.82rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: .6px; }
 .tracking-box .tn-number { font-size: 1.6rem; font-weight: 800; margin: 10px 0; letter-spacing: 1px; }
 .tracking-box p { color: #CFE0EA; font-size: 0.9rem; margin: 0; }
+
+/* ---------- Admin Review ---------- */
+.admin-login-box {
+  max-width: 380px; margin: 0 auto; background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 30px;
+}
+.admin-login-box label { display: block; font-size: 0.85rem; font-weight: 600; margin: 14px 0 6px; }
+.admin-login-box input {
+  width: 100%; padding: 12px 14px; border-radius: var(--radius); border: 1.5px solid var(--border); font-size: 0.95rem;
+}
+.admin-login-box button { width: 100%; margin-top: 18px; }
+
+.app-review-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px; margin-bottom: 14px;
+}
+.app-review-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.app-review-card h3 { margin: 4px 0; font-size: 1.02rem; }
+.app-review-meta { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin-top: 8px; }
+.app-review-actions { margin-top: 14px; display: flex; gap: 10px; }
+.app-review-actions button {
+  border: none; border-radius: var(--radius); padding: 9px 18px; font-weight: 700; font-size: 0.85rem; cursor: pointer;
+}
+.btn-approve { background: var(--green); color: #fff; }
+.btn-reject { background: #FBEAEA; color: #B3261E; }
+.status-pill {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase; padding: 4px 11px; border-radius: 20px;
+}
+.status-pill.pending { background: #FDF2E0; color: #B7791F; }
+.status-pill.approved { background: #E4F5EC; color: var(--green); }
+.status-pill.rejected { background: #FBEAEA; color: #B3261E; }
+
+
+
+
+
+
+
+
+
+
+
+
+
