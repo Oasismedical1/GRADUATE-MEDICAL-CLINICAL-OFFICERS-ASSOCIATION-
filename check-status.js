@@ -34,14 +34,62 @@ async function checkStatus(e) {
   const statusClass = app.status.toLowerCase();
   const submitted = new Date(app.submitted_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
+  if (statusClass === "approved" && app.membership_number) {
+    renderCard(resultBox, app);
+    return;
+  }
+
   resultBox.innerHTML = `
     <div class="verify-card">
-      <div class="verify-badge ${statusClass === "approved" ? "active" : statusClass === "rejected" ? "expired" : "suspended"}">
-        ${statusClass === "approved" ? "✓" : statusClass === "rejected" ? "!" : "•"}
+      <div class="verify-badge ${statusClass === "rejected" ? "expired" : "suspended"}">
+        ${statusClass === "rejected" ? "!" : "•"}
       </div>
       <div>
-        <span class="verify-status ${statusClass === "approved" ? "active" : statusClass === "rejected" ? "expired" : "suspended"}">${app.status}</span>
+        <span class="verify-status ${statusClass === "rejected" ? "expired" : "suspended"}">${app.status}</span>
         <div class="verify-meta"><span>Submitted: ${submitted}</span></div>
       </div>
     </div>`;
+}
+
+function renderCard(container, app) {
+  const year = new Date().getFullYear();
+  const verifyUrl = `${location.origin}${location.pathname.replace("check-status.html", "verify.html")}?number=${encodeURIComponent(app.membership_number)}`;
+
+  container.innerHTML = `
+    <div class="membership-card" id="member-card">
+      <div class="mc-header">
+        <img src="logo.png" alt="GMCOA-U">
+        <div>
+          <div class="mc-org">GMCOA-U</div>
+          <div class="mc-sub">OFFICIAL MEMBERSHIP CARD</div>
+        </div>
+      </div>
+      <div class="mc-name">${escapeHtmlS(app.full_name)}</div>
+      <div class="mc-number">${escapeHtmlS(app.membership_number)}</div>
+      <div class="mc-grid">
+        <div><div class="mc-label">Category</div><div class="mc-value">${escapeHtmlS(app.membership_category)}</div></div>
+        <div><div class="mc-label">Expires</div><div class="mc-value">31 Dec ${year}</div></div>
+        <div><div class="mc-label">District</div><div class="mc-value">${escapeHtmlS(app.district_of_residence || "—")}</div></div>
+        <div><div class="mc-label">Region</div><div class="mc-value">${escapeHtmlS(app.region || "—")}</div></div>
+      </div>
+      <div class="mc-footer">
+        <span class="mc-status-badge">Active</span>
+        <div class="mc-qr" id="qr-holder"></div>
+      </div>
+    </div>
+    <div class="card-actions">
+      <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+    </div>`;
+
+  new QRCode(document.getElementById("qr-holder"), {
+    text: verifyUrl,
+    width: 64,
+    height: 64,
+  });
+}
+
+function escapeHtmlS(str) {
+  const div = document.createElement("div");
+  div.textContent = str ?? "";
+  return div.innerHTML;
 }
