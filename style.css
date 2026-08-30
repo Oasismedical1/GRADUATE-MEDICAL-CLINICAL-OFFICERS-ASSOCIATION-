@@ -905,6 +905,38 @@ footer.site-footer {
   .membership-card { box-shadow: none; margin: 0 auto; }
 }
 
+/* ---------- Finance Dashboard ---------- */
+.finance-summary { display: grid; gap: 16px; grid-template-columns: 1fr; margin-bottom: 30px; }
+@media (min-width: 700px) { .finance-summary { grid-template-columns: repeat(3, 1fr); } }
+.finance-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; text-align: center;
+}
+.finance-card .fc-label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .4px; }
+.finance-card .fc-value { font-size: 1.6rem; font-weight: 800; margin-top: 6px; }
+.finance-card.income .fc-value { color: var(--green); }
+.finance-card.expenditure .fc-value { color: #B3261E; }
+.finance-card.balance .fc-value { color: var(--deep-blue); }
+
+.finance-forms { display: grid; gap: 20px; grid-template-columns: 1fr; margin-bottom: 30px; }
+@media (min-width: 900px) { .finance-forms { grid-template-columns: 1fr 1fr; } }
+.finance-form-box {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 22px;
+}
+.finance-form-box h3 { margin: 0 0 14px; font-size: 1rem; }
+.finance-form-box label { display: block; font-size: 0.82rem; font-weight: 600; margin: 12px 0 5px; }
+.finance-form-box input, .finance-form-box select {
+  width: 100%; padding: 10px 12px; border-radius: var(--radius); border: 1.5px solid var(--border); font-size: 0.9rem;
+}
+.finance-form-box button { margin-top: 16px; }
+
+.tx-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+.tx-table th, .tx-table td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+.tx-table th { color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; }
+.tx-table .amt-income { color: var(--green); font-weight: 700; }
+.tx-table .amt-expenditure { color: #B3261E; font-weight: 700; }
+.tx-table-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 8px; }
+
+
 
 
 
