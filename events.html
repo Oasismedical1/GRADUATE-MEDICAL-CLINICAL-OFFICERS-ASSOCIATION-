@@ -25,7 +25,7 @@
       <a href="verify.html">Verify Member</a>
     </nav>
     <div class="nav-actions">
-      <a class="btn btn-outline" href="membership.html">Member Login</a>
+      <a class="btn btn-outline" href="portal.html">Member Login</a>
       <button class="nav-toggle" aria-label="Toggle navigation" id="nav-toggle">☰</button>
     </div>
   </div>
@@ -40,6 +40,8 @@
 
 <section class="section">
   <div class="container">
+    <p style="text-align:right;margin-bottom:16px;"><a href="event-pass.html">Already registered? Retrieve your pass →</a></p>
+
     <div class="countdown-banner" id="countdown-banner" style="display:none;">
       <div>
         <div class="cd-label">Next Event</div>
@@ -70,8 +72,34 @@
       </div>
       <div class="cal-grid" id="cal-grid"></div>
     </div>
+
+    <div id="event-pass-container" style="display:none;margin-top:30px;"></div>
   </div>
 </section>
+
+<div class="enroll-modal-bg" id="event-reg-modal-bg">
+  <div class="enroll-modal">
+    <h3>Register: <span id="reg-event-title"></span></h3>
+    <form id="event-reg-form">
+      <label for="er-name">Full Name</label>
+      <input id="er-name" name="full_name" type="text" required>
+      <label for="er-email">Email</label>
+      <input id="er-email" name="email" type="email" required>
+      <label for="er-phone">Phone <span style="font-weight:400;color:var(--text-muted);">(optional)</span></label>
+      <input id="er-phone" name="phone" type="tel">
+      <label for="er-attendance">Attendance Type</label>
+      <select id="er-attendance" name="attendance_type" required>
+        <option value="Physical">Physical</option>
+        <option value="Virtual">Virtual</option>
+      </select>
+      <p id="event-reg-note" style="font-size:0.85rem;margin-top:10px;"></p>
+      <div class="modal-actions">
+        <button class="btn btn-primary" type="submit">Confirm Registration</button>
+        <button class="btn btn-outline" type="button" id="event-reg-cancel" style="color:var(--deep-blue);border-color:var(--deep-blue);">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
 
 <footer class="site-footer" id="contact">
   <div class="container footer-grid">
@@ -108,6 +136,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script src="config.js"></script>
 <script src="events.js"></script>
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
