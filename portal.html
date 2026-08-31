@@ -1,0 +1,80 @@
+-- Run in the correct Supabase project.
+-- IMPORTANT: this tightens security. Before running, replace
+-- 'YOUR-ADMIN-EMAIL@example.com' below with the actual email you use
+-- to log into admin.html / finance.html.
+
+-- 1. A real admin allowlist, so we can tell "admin" apart from
+-- "any signed-in member" once regular members can create accounts.
+create table if not exists admin_users (
+  email text primary key
+);
+
+insert into admin_users (email) values ('YOUR-ADMIN-EMAIL@example.com')
+on conflict (email) do nothing;
+
+-- 2. Replace the old blanket "any authenticated user" policies with
+-- ones that check the admin_users allowlist instead. Without this,
+-- once members can sign up, they'd inherit the same access as you.
+
+drop policy if exists "authenticated can read applications" on membership_applications;
+drop policy if exists "authenticated can update applications" on membership_applications;
+drop policy if exists "authenticated can manage member directory" on member_directory;
+drop policy if exists "authenticated can manage finance transactions" on finance_transactions;
+drop policy if exists "authenticated can manage courses" on cpd_courses;
+drop policy if exists "authenticated can view enrollments" on cpd_enrollments;
+
+create policy "admin can read applications" on membership_applications
+  for select to authenticated
+  using (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'));
+
+create policy "admin can update applications" on membership_applications
+  for update to authenticated
+  using (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'));
+
+create policy "admin can manage member directory" on member_directory
+  for all to authenticated
+  using (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'))
+  with check (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'));
+
+create policy "admin can manage finance transactions" on finance_transactions
+  for all to authenticated
+  using (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'))
+  with check (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'));
+
+create policy "admin can manage courses" on cpd_courses
+  for all to authenticated
+  using (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'))
+  with check (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'));
+
+create policy "admin can view enrollments" on cpd_enrollments
+  for select to authenticated
+  using (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'));
+
+-- 3. New: members can see their OWN application and enrollments —
+-- scoped strictly to rows matching their own signed-in email.
+create policy "members can read own application" on membership_applications
+  for select to authenticated
+  using (email = auth.jwt() ->> 'email');
+
+create policy "members can read own enrollments" on cpd_enrollments
+  for select to authenticated
+  using (email = auth.jwt() ->> 'email');
+
+-- Members can see their own subscription/fee payment history, matched
+-- by membership number linked to their approved application.
+create policy "members can read own subscription payments" on finance_transactions
+  for select to authenticated
+  using (
+    membership_number is not null
+    and membership_number in (
+      select membership_number from membership_applications
+      where email = auth.jwt() ->> 'email' and membership_number is not null
+    )
+  );
+
+-- 4. Track whether an enrolled course was actually completed —
+-- only completed courses count toward a member's CPD points.
+-- For now, mark completions via Table Editor (cpd_enrollments.completed).
+alter table cpd_enrollments add column if not exists completed boolean not null default false;
+
+NOTIFY pgrst, 'reload schema';
