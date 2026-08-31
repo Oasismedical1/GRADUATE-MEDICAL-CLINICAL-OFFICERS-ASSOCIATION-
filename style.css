@@ -994,3 +994,22 @@ footer.site-footer {
   background: var(--bg-soft); border: 1px dashed var(--border); border-radius: var(--radius);
   padding: 18px; text-align: center; color: var(--text-muted); font-size: 0.86rem;
 }
+
+/* ---------- Governance / Decision Tracker ---------- */
+.decision-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px; margin-bottom: 14px;
+}
+.decision-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.decision-resnum { font-size: 0.78rem; color: var(--text-muted); font-weight: 700; }
+.decision-status-select {
+  padding: 5px 10px; border-radius: 20px; border: none; font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; cursor: pointer;
+}
+.decision-status-select.pending { background: var(--bg-soft); color: var(--text-muted); }
+.decision-status-select.in-progress { background: #E6F0F7; color: var(--deep-blue); }
+.decision-status-select.completed { background: #E4F5EC; color: var(--green); }
+.decision-status-select.overdue { background: #FBEAEA; color: #B3261E; }
+.decision-card h3 { margin: 8px 0 6px; font-size: 1rem; }
+.decision-card p { margin: 0; font-size: 0.88rem; color: var(--text-muted); }
+.decision-meta { margin-top: 12px; font-size: 0.84rem; color: var(--text-muted); display: flex; gap: 16px; flex-wrap: wrap; }
