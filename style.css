@@ -1060,3 +1060,52 @@ footer.site-footer {
 .corr-card h4, .stake-card h4 { margin: 8px 0 4px; font-size: 0.98rem; }
 .corr-card p, .stake-card p { margin: 0; font-size: 0.86rem; color: var(--text-muted); }
 .corr-meta, .stake-meta { margin-top: 10px; font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* ---------- Professional e-Portfolio ---------- */
+.portfolio-type-tabs { display: flex; gap: 6px; overflow-x: auto; margin-bottom: 20px; padding-bottom: 4px; }
+.portfolio-type-tabs button {
+  background: var(--bg-soft); border: none; border-radius: 20px; padding: 8px 14px;
+  font-size: 0.8rem; font-weight: 700; color: var(--text-muted); white-space: nowrap; cursor: pointer;
+}
+.portfolio-type-tabs button.active { background: var(--deep-blue); color: #fff; }
+.portfolio-entry {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 18px; margin-bottom: 10px; display: flex; justify-content: space-between; gap: 12px; align-items: flex-start;
+}
+.portfolio-entry h4 { margin: 0 0 4px; font-size: 0.95rem; }
+.portfolio-entry .pe-org { font-size: 0.82rem; color: var(--green); }
+.portfolio-entry .pe-date { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+.portfolio-entry .pe-desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; }
+.visibility-toggle { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-muted); flex-shrink: 0; }
+.delete-entry-btn { background: none; border: none; color: #B3261E; font-size: 0.8rem; cursor: pointer; margin-top: 8px; }
+
+/* ---------- Membership Analytics & Directory (admin) ---------- */
+.analytics-grid { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); margin-bottom: 30px; }
+@media (min-width: 700px) { .analytics-grid { grid-template-columns: repeat(4, 1fr); } }
+.stat-tile { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; text-align: center; }
+.stat-tile .st-num { font-size: 1.6rem; font-weight: 800; color: var(--deep-blue); }
+.stat-tile .st-lbl { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-top: 4px; }
+.breakdown-list { display: grid; gap: 6px; }
+.breakdown-row { display: flex; justify-content: space-between; padding: 8px 12px; background: #fff; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem; }
+.directory-search-row { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.directory-search-row input, .directory-search-row select { padding: 10px 12px; border-radius: var(--radius); border: 1.5px solid var(--border); font-size: 0.88rem; }
+.dir-row {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px 16px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+}
+.dir-row .dir-name { font-weight: 600; }
+.dir-row .dir-meta { font-size: 0.82rem; color: var(--text-muted); }
+.dir-row select { padding: 6px 10px; border-radius: var(--radius); border: 1.5px solid var(--border); font-size: 0.82rem; }
+
+/* ---------- Budget Management ---------- */
+.budget-row {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 18px; margin-bottom: 10px;
+}
+.budget-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.budget-top .b-cat { font-weight: 700; }
+.budget-top .b-year { font-size: 0.78rem; color: var(--text-muted); }
+.budget-bar { height: 8px; background: var(--bg-soft); border-radius: 4px; overflow: hidden; }
+.budget-bar-fill { height: 100%; background: var(--green); }
+.budget-bar-fill.over { background: #B3261E; }
+.budget-nums { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-top: 6px; }
