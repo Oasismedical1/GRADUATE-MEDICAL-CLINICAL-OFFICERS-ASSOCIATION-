@@ -967,18 +967,30 @@ footer.site-footer {
 }
 .enroll-modal .modal-actions { display: flex; gap: 10px; margin-top: 18px; }
 
+/* ---------- Member Portal & Dashboard ---------- */
+.portal-tabs { display: flex; gap: 6px; max-width: 380px; margin: 0 auto 20px; background: var(--bg-soft); border-radius: var(--radius); padding: 4px; }
+.portal-tabs button {
+  flex: 1; background: transparent; border: none; padding: 10px; border-radius: 7px;
+  font-weight: 700; font-size: 0.88rem; color: var(--text-muted); cursor: pointer;
+}
+.portal-tabs button.active { background: #fff; color: var(--deep-blue); box-shadow: 0 1px 4px rgba(0,0,0,.1); }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.dash-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+@media (min-width: 800px) { .dash-grid { grid-template-columns: 1fr 1fr; } }
+.dash-full { grid-column: 1 / -1; }
+.dash-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 24px;
+}
+.dash-card h3 { margin: 0 0 14px; font-size: 1rem; color: var(--deep-blue-dark); }
+.dash-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+.dash-row:last-child { border-bottom: none; }
+.dash-row .dr-label { color: var(--text-muted); }
+.dash-row .dr-value { font-weight: 600; color: var(--text); }
+.dash-empty-note { font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
+.cpd-total { text-align: center; padding: 20px 0; }
+.cpd-total .num { font-size: 2.2rem; font-weight: 800; color: var(--deep-blue); }
+.cpd-total .lbl { font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .4px; }
+.coming-soon-card {
+  background: var(--bg-soft); border: 1px dashed var(--border); border-radius: var(--radius);
+  padding: 18px; text-align: center; color: var(--text-muted); font-size: 0.86rem;
+}
