@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("logout-btn").addEventListener("click", logout);
   document.getElementById("income-form").addEventListener("submit", (e) => addTransaction(e, "Income"));
   document.getElementById("expenditure-form").addEventListener("submit", (e) => addTransaction(e, "Expenditure"));
+  document.getElementById("budget-form").addEventListener("submit", addBudget);
 });
 
 async function checkSession() {
@@ -78,6 +79,55 @@ async function loadFinanceData() {
 
   renderSummary(data || []);
   renderTransactions(data || []);
+  loadBudgets(data || []);
+}
+
+async function addBudget(e) {
+  e.preventDefault();
+  const form = e.target;
+  const payload = {
+    category: form.category.value.trim(),
+    budget_year: parseInt(form.budget_year.value, 10),
+    budgeted_amount: parseFloat(form.budgeted_amount.value),
+    notes: form.notes.value.trim() || null,
+  };
+
+  const { error } = await supabaseClient.from("budgets").insert(payload);
+  if (error) { alert("Failed to save budget: " + error.message); return; }
+  form.reset();
+  loadFinanceData();
+}
+
+async function loadBudgets(transactions) {
+  const list = document.getElementById("budget-list");
+  const { data, error } = await supabaseClient
+    .from("budgets")
+    .select("*")
+    .order("budget_year", { ascending: false });
+
+  if (error) { list.innerHTML = `<p class="card-empty">Something went wrong loading budgets.</p>`; return; }
+  if (!data || data.length === 0) { list.innerHTML = `<p class="card-empty">No budgets set yet — add one above.</p>`; return; }
+
+  list.innerHTML = data.map((b) => {
+    const actual = transactions
+      .filter((t) => t.type === "Expenditure" && t.category === b.category && new Date(t.transaction_date).getFullYear() === b.budget_year)
+      .reduce((sum, t) => sum + Number(t.amount), 0);
+    const pct = b.budgeted_amount > 0 ? Math.min(100, (actual / b.budgeted_amount) * 100) : 0;
+    const over = actual > b.budgeted_amount;
+
+    return `
+      <div class="budget-row">
+        <div class="budget-top">
+          <span class="b-cat">${escapeHtmlF(b.category)}</span>
+          <span class="b-year">${b.budget_year}</span>
+        </div>
+        <div class="budget-bar"><div class="budget-bar-fill ${over ? "over" : ""}" style="width:${pct}%;"></div></div>
+        <div class="budget-nums">
+          <span>Spent: ${formatUGX(actual)}</span>
+          <span>Budget: ${formatUGX(b.budgeted_amount)}</span>
+        </div>
+      </div>`;
+  }).join("");
 }
 
 function renderSummary(transactions) {
