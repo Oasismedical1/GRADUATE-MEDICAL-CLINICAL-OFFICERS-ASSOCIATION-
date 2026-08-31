@@ -20,6 +20,7 @@
       <a href="admin.html">Applications</a>
       <a href="governance.html">Governance</a>
       <a href="comms.html">Communications</a>
+      <a href="directory.html">Directory</a>
       <a href="index.html">Public Site</a>
     </nav>
     <div class="nav-actions">
@@ -132,6 +133,28 @@
             <button class="btn btn-primary" type="submit">Add Expenditure</button>
           </form>
         </div>
+      </div>
+
+      <div class="section-head">
+        <div class="section-eyebrow">Planning vs. Actual</div>
+        <h2>Budget Management</h2>
+      </div>
+      <div class="finance-form-box" style="margin-bottom:22px;">
+        <h3>Set a Budget</h3>
+        <form id="budget-form">
+          <label>Category</label>
+          <input type="text" name="category" placeholder="e.g. Events & Conferences" required>
+          <label>Year</label>
+          <input type="number" name="budget_year" min="2020" max="2100" required>
+          <label>Budgeted Amount (UGX)</label>
+          <input type="number" name="budgeted_amount" min="0" step="1" required>
+          <label>Notes</label>
+          <input type="text" name="notes">
+          <button class="btn btn-primary" type="submit">Save Budget</button>
+        </form>
+      </div>
+      <div id="budget-list" style="margin-bottom:30px;">
+        <p class="card-empty">Loading…</p>
       </div>
 
       <div class="section-head">
