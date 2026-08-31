@@ -1019,3 +1019,25 @@ footer.site-footer {
   background: none; border: none; color: var(--deep-blue); font-weight: 600;
   font-size: inherit; cursor: pointer; padding: 0; text-decoration: underline;
 }
+
+/* ---------- Research Project Registry ---------- */
+.project-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px; margin-bottom: 14px;
+}
+.project-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.project-id { font-size: 0.78rem; color: var(--text-muted); font-weight: 700; }
+.project-card h3 { margin: 8px 0 4px; font-size: 1rem; }
+.project-pi { font-size: 0.86rem; color: var(--green); font-weight: 600; margin-bottom: 8px; }
+.project-meta { font-size: 0.85rem; color: var(--text-muted); margin-top: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
+.ethics-row {
+  margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+}
+.ethics-badge { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; padding: 4px 11px; border-radius: 20px; }
+.ethics-badge.not-submitted { background: var(--bg-soft); color: var(--text-muted); }
+.ethics-badge.submitted { background: #E6F0F7; color: var(--deep-blue); }
+.ethics-badge.approved { background: #E4F5EC; color: var(--green); }
+.ethics-badge.expired { background: #FBEAEA; color: #B3261E; }
+.ethics-badge.expiring-soon { background: #FDF2E0; color: #B7791F; }
+.project-card select { padding: 6px 10px; border-radius: var(--radius); border: 1.5px solid var(--border); font-size: 0.85rem; }
