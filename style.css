@@ -1041,3 +1041,22 @@ footer.site-footer {
 .ethics-badge.expired { background: #FBEAEA; color: #B3261E; }
 .ethics-badge.expiring-soon { background: #FDF2E0; color: #B7791F; }
 .project-card select { padding: 6px 10px; border-radius: var(--radius); border: 1.5px solid var(--border); font-size: 0.85rem; }
+
+/* ---------- Communications / Correspondence & Stakeholders ---------- */
+.comms-tabs { display: flex; gap: 6px; margin-bottom: 24px; background: var(--bg-soft); border-radius: var(--radius); padding: 4px; max-width: 420px; }
+.comms-tabs button { flex: 1; background: transparent; border: none; padding: 10px; border-radius: 7px; font-weight: 700; font-size: 0.86rem; color: var(--text-muted); cursor: pointer; }
+.comms-tabs button.active { background: #fff; color: var(--deep-blue); box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+.comms-panel { display: none; }
+.comms-panel.active { display: block; }
+.corr-card, .stake-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 18px; margin-bottom: 12px;
+}
+.corr-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.corr-refnum { font-size: 0.78rem; color: var(--text-muted); font-weight: 700; }
+.direction-badge { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+.direction-badge.incoming { background: #E6F0F7; color: var(--deep-blue); }
+.direction-badge.outgoing { background: #FDF2E0; color: #B7791F; }
+.corr-card h4, .stake-card h4 { margin: 8px 0 4px; font-size: 0.98rem; }
+.corr-card p, .stake-card p { margin: 0; font-size: 0.86rem; color: var(--text-muted); }
+.corr-meta, .stake-meta { margin-top: 10px; font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 14px; flex-wrap: wrap; }
