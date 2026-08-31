@@ -1,80 +1,106 @@
--- Run in the correct Supabase project.
--- IMPORTANT: this tightens security. Before running, replace
--- 'YOUR-ADMIN-EMAIL@example.com' below with the actual email you use
--- to log into admin.html / finance.html.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Login | GMCOA-U</title>
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
--- 1. A real admin allowlist, so we can tell "admin" apart from
--- "any signed-in member" once regular members can create accounts.
-create table if not exists admin_users (
-  email text primary key
-);
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="nav-brand">
+      <img src="logo.png" alt="GMCOA-U logo" class="mark">
+      GMCOA-U
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="about.html">About</a>
+      <a href="membership.html">Membership</a>
+      <a href="news.html">News</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="nav-toggle" aria-label="Toggle navigation" id="nav-toggle">☰</button>
+    </div>
+  </div>
+</header>
 
-insert into admin_users (email) values ('YOUR-ADMIN-EMAIL@example.com')
-on conflict (email) do nothing;
+<section class="page-hero">
+  <div class="container">
+    <div class="section-eyebrow">Members Only</div>
+    <h1>Member Portal</h1>
+  </div>
+</section>
 
--- 2. Replace the old blanket "any authenticated user" policies with
--- ones that check the admin_users allowlist instead. Without this,
--- once members can sign up, they'd inherit the same access as you.
+<section class="section">
+  <div class="container">
+    <div class="portal-tabs">
+      <button id="tab-login" class="active">Log In</button>
+      <button id="tab-signup">Sign Up</button>
+    </div>
 
-drop policy if exists "authenticated can read applications" on membership_applications;
-drop policy if exists "authenticated can update applications" on membership_applications;
-drop policy if exists "authenticated can manage member directory" on member_directory;
-drop policy if exists "authenticated can manage finance transactions" on finance_transactions;
-drop policy if exists "authenticated can manage courses" on cpd_courses;
-drop policy if exists "authenticated can view enrollments" on cpd_enrollments;
+    <div class="admin-login-box">
+      <form id="login-form">
+        <label for="login-email">Email</label>
+        <input id="login-email" type="email" required>
+        <label for="login-password">Password</label>
+        <input id="login-password" type="password" required>
+        <button class="btn btn-primary" type="submit">Log In</button>
+      </form>
 
-create policy "admin can read applications" on membership_applications
-  for select to authenticated
-  using (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'));
+      <form id="signup-form" style="display:none;">
+        <p style="font-size:0.85rem;color:var(--text-muted);margin:0 0 4px;">Use the same email you applied with to see your application and membership details.</p>
+        <label for="signup-email">Email</label>
+        <input id="signup-email" type="email" required>
+        <label for="signup-password">Password</label>
+        <input id="signup-password" type="password" minlength="6" required>
+        <button class="btn btn-primary" type="submit">Create Account</button>
+      </form>
 
-create policy "admin can update applications" on membership_applications
-  for update to authenticated
-  using (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'));
+      <p id="portal-note" style="margin-top:14px;font-size:0.88rem;"></p>
+    </div>
+  </div>
+</section>
 
-create policy "admin can manage member directory" on member_directory
-  for all to authenticated
-  using (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'))
-  with check (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'));
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>GMCOA-U</h4>
+      <a href="contact.html">Contact Us</a>
+      <a href="about.html">About GMCOA</a>
+      <a href="membership.html">Membership</a>
+      <a href="verify.html">Verify Member</a>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <a href="cpd.html">CPD Academy</a>
+      <a href="research.html">Research</a>
+      <a href="advocacy.html">Advocacy</a>
+      <a href="careers.html">Careers</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:graduate.mcoa.ug@gmail.com">graduate.mcoa.ug@gmail.com</a>
+      <a href="tel:+256782024799">+256 782 024799</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> Graduate Medical Clinical Officers Association of Uganda. All rights reserved.</div>
+</footer>
 
-create policy "admin can manage finance transactions" on finance_transactions
-  for all to authenticated
-  using (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'))
-  with check (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'));
-
-create policy "admin can manage courses" on cpd_courses
-  for all to authenticated
-  using (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'))
-  with check (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'));
-
-create policy "admin can view enrollments" on cpd_enrollments
-  for select to authenticated
-  using (exists (select 1 from admin_users where email = auth.jwt() ->> 'email'));
-
--- 3. New: members can see their OWN application and enrollments —
--- scoped strictly to rows matching their own signed-in email.
-create policy "members can read own application" on membership_applications
-  for select to authenticated
-  using (email = auth.jwt() ->> 'email');
-
-create policy "members can read own enrollments" on cpd_enrollments
-  for select to authenticated
-  using (email = auth.jwt() ->> 'email');
-
--- Members can see their own subscription/fee payment history, matched
--- by membership number linked to their approved application.
-create policy "members can read own subscription payments" on finance_transactions
-  for select to authenticated
-  using (
-    membership_number is not null
-    and membership_number in (
-      select membership_number from membership_applications
-      where email = auth.jwt() ->> 'email' and membership_number is not null
-    )
-  );
-
--- 4. Track whether an enrolled course was actually completed —
--- only completed courses count toward a member's CPD points.
--- For now, mark completions via Table Editor (cpd_enrollments.completed).
-alter table cpd_enrollments add column if not exists completed boolean not null default false;
-
-NOTIFY pgrst, 'reload schema';
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="portal.js"></script>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+document.querySelector(".nav-toggle").addEventListener("click", () => {
+  document.querySelector(".nav-links").classList.toggle("open");
+});
+</script>
+</body>
+</html>
