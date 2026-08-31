@@ -2,10 +2,12 @@ let allEvents = [];
 let calMonth = new Date().getMonth();
 let calYear = new Date().getFullYear();
 let countdownTimer = null;
+let selectedEvent = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   wireEventsControls();
   loadAllEvents();
+  wireRegistrationModal();
   document.querySelector(".nav-toggle")?.addEventListener("click", () => {
     document.querySelector(".nav-links").classList.toggle("open");
   });
@@ -30,7 +32,7 @@ function switchView(view) {
 async function loadAllEvents() {
   const { data, error } = await supabaseClient
     .from("events")
-    .select("title,description,event_type,start_time,end_time,location,is_virtual,registration_url,image_url")
+    .select("id,title,description,event_type,start_time,end_time,location,is_virtual,registration_url,image_url")
     .order("start_time", { ascending: true });
 
   if (error) {
@@ -112,8 +114,9 @@ function eventCard(e) {
   const mapLink = !e.is_virtual && e.location
     ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.location)}" target="_blank" rel="noopener">View Map</a>`
     : "";
-  const regBtn = e.registration_url
-    ? `<a class="btn btn-primary" href="${e.registration_url}" target="_blank" rel="noopener">Register</a>`
+  const regBtn = `<button class="btn btn-primary open-register-btn" data-id="${e.id}" data-title="${escapeHtmlE(e.title)}">Register</button>`;
+  const externalLink = e.registration_url
+    ? `<a href="${e.registration_url}" target="_blank" rel="noopener">External Link</a>`
     : "";
 
   return `
@@ -127,9 +130,97 @@ function eventCard(e) {
         <div class="event-actions">
           ${regBtn}
           ${mapLink}
+          ${externalLink}
         </div>
       </div>
     </div>`;
+}
+
+function wireRegistrationModal() {
+  document.getElementById("event-list-view").addEventListener("click", (e) => {
+    const btn = e.target.closest(".open-register-btn");
+    if (!btn) return;
+    selectedEvent = { id: btn.dataset.id, title: btn.dataset.title };
+    document.getElementById("reg-event-title").textContent = selectedEvent.title;
+    document.getElementById("event-reg-modal-bg").classList.add("open");
+  });
+
+  document.getElementById("event-reg-cancel").addEventListener("click", () => {
+    document.getElementById("event-reg-modal-bg").classList.remove("open");
+  });
+
+  document.getElementById("event-reg-form").addEventListener("submit", submitRegistration);
+}
+
+function generateRegistrationNumber() {
+  const year = new Date().getFullYear();
+  const rand = Math.floor(100000 + Math.random() * 900000);
+  return `EVT-${year}-${rand}`;
+}
+
+async function submitRegistration(e) {
+  e.preventDefault();
+  const form = e.target;
+  const note = document.getElementById("event-reg-note");
+  const regNumber = generateRegistrationNumber();
+
+  const payload = {
+    event_id: selectedEvent.id,
+    event_title: selectedEvent.title,
+    full_name: form.full_name.value.trim(),
+    email: form.email.value.trim(),
+    phone: form.phone.value.trim() || null,
+    attendance_type: form.attendance_type.value,
+    registration_number: regNumber,
+  };
+
+  const { error } = await supabaseClient.from("event_registrations").insert(payload);
+
+  if (error) {
+    note.textContent = "Something went wrong. Please try again.";
+    note.style.color = "#B3261E";
+    return;
+  }
+
+  document.getElementById("event-reg-modal-bg").classList.remove("open");
+  form.reset();
+  showEventPass(payload);
+}
+
+function showEventPass(reg) {
+  const container = document.getElementById("event-pass-container");
+  container.style.display = "block";
+  container.innerHTML = `
+    <div class="membership-card" id="event-pass-card">
+      <div class="mc-header">
+        <img src="logo.png" alt="GMCOA-U">
+        <div>
+          <div class="mc-org">GMCOA-U</div>
+          <div class="mc-sub">EVENT PASS</div>
+        </div>
+      </div>
+      <div class="mc-name">${escapeHtmlE(reg.full_name)}</div>
+      <div class="mc-number">${escapeHtmlE(reg.registration_number)}</div>
+      <div class="mc-grid">
+        <div><div class="mc-label">Event</div><div class="mc-value">${escapeHtmlE(reg.event_title)}</div></div>
+        <div><div class="mc-label">Attendance</div><div class="mc-value">${escapeHtmlE(reg.attendance_type)}</div></div>
+      </div>
+      <div class="mc-footer">
+        <span class="mc-status-badge">Confirmed</span>
+        <div class="mc-qr" id="event-qr-holder"></div>
+      </div>
+    </div>
+    <div class="card-actions">
+      <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+    </div>`;
+
+  new QRCode(document.getElementById("event-qr-holder"), {
+    text: `${reg.registration_number} | ${reg.full_name} | ${reg.event_title}`,
+    width: 64,
+    height: 64,
+  });
+
+  container.scrollIntoView({ behavior: "smooth" });
 }
 
 function shiftMonth(delta) {
