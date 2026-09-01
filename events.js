@@ -32,7 +32,7 @@ function switchView(view) {
 async function loadAllEvents() {
   const { data, error } = await supabaseClient
     .from("events")
-    .select("id,title,description,event_type,start_time,end_time,location,is_virtual,registration_url,image_url")
+    .select("id,title,description,event_type,start_time,end_time,location,is_virtual,registration_url,image_url,virtual_meeting_link,virtual_meeting_platform")
     .order("start_time", { ascending: true });
 
   if (error) {
@@ -118,6 +118,9 @@ function eventCard(e) {
   const externalLink = e.registration_url
     ? `<a href="${e.registration_url}" target="_blank" rel="noopener">External Link</a>`
     : "";
+  const joinBtn = e.virtual_meeting_link
+    ? `<a class="btn join-meeting-btn" href="${e.virtual_meeting_link}" target="_blank" rel="noopener">Join via ${escapeHtmlE(e.virtual_meeting_platform || "Video Call")}</a>`
+    : "";
 
   return `
     <div class="event-card">
@@ -131,6 +134,7 @@ function eventCard(e) {
           ${regBtn}
           ${mapLink}
           ${externalLink}
+          ${joinBtn}
         </div>
       </div>
     </div>`;
