@@ -108,10 +108,13 @@ async function loadMembershipStatus(membershipNumber) {
 async function loadCpd(email) {
   const { data, error } = await supabaseClient
     .from("cpd_enrollments")
-    .select("completed, cpd_courses(title, cpd_points)")
+    .select("course_id, completed, cpd_courses(title, cpd_points)")
     .eq("email", email);
 
   const listEl = document.getElementById("cpd-enrollment-list");
+
+  const { data: targetData } = await supabaseClient.from("cpd_targets").select("annual_points_required").eq("id", 1).single();
+  const annualTarget = targetData?.annual_points_required || 20;
 
   if (error) {
     console.error("Failed to load CPD data:", error);
@@ -131,10 +134,23 @@ async function loadCpd(email) {
 
   document.getElementById("cpd-points-total").textContent = totalPoints;
 
+  const targetNote = document.getElementById("cpd-target-note");
+  if (targetNote) {
+    const met = totalPoints >= annualTarget;
+    targetNote.textContent = met
+      ? `You've met this year's target of ${annualTarget} CPD points.`
+      : `${annualTarget - totalPoints} more points needed to reach this year's target of ${annualTarget}.`;
+    targetNote.style.color = met ? "var(--green)" : "var(--text-muted)";
+  }
+
   listEl.innerHTML = data.map((e) => `
     <div class="dash-row">
       <span class="dr-label">${escapeHtmlD(e.cpd_courses?.title || "Untitled course")}</span>
-      <span class="dr-value">${e.completed ? `✓ ${e.cpd_courses?.cpd_points || 0} pts` : "Enrolled"}</span>
+      <span class="dr-value">
+        ${e.completed
+          ? `✓ ${e.cpd_courses?.cpd_points || 0} pts · <a href="quiz.html?course=${e.course_id}">Retake Quiz</a> · <a href="certificate.html?type=course&ref=${e.course_id}">Certificate</a>`
+          : `Enrolled · <a href="quiz.html?course=${e.course_id}">Take Quiz</a>`}
+      </span>
     </div>`).join("");
 }
 
