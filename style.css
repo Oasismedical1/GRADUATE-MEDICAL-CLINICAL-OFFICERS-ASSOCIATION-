@@ -1109,3 +1109,44 @@ footer.site-footer {
 .budget-bar-fill { height: 100%; background: var(--green); }
 .budget-bar-fill.over { background: #B3261E; }
 .budget-nums { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-top: 6px; }
+
+/* ---------- Elections ---------- */
+.election-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px; margin-bottom: 14px;
+}
+.election-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.election-status-pill { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; padding: 4px 11px; border-radius: 20px; }
+.election-status-pill.nominations-open { background: #E6F0F7; color: var(--deep-blue); }
+.election-status-pill.nominations-closed { background: var(--bg-soft); color: var(--text-muted); }
+.election-status-pill.voting-open { background: #E4F5EC; color: var(--green); }
+.election-status-pill.closed { background: #FDF2E0; color: #B7791F; }
+.election-status-pill.results-declared { background: var(--gold); color: var(--deep-blue-dark); }
+.election-card h3 { margin: 8px 0 6px; font-size: 1.05rem; }
+.election-meta { font-size: 0.85rem; color: var(--text-muted); margin-top: 10px; }
+.election-card .btn { margin-top: 14px; }
+
+.candidate-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px; text-align: center;
+}
+.candidate-photo { width: 84px; height: 84px; border-radius: 50%; background: var(--bg-soft); margin: 0 auto 12px; border: 3px solid var(--gold); }
+.candidate-card h4 { margin: 0 0 4px; font-size: 0.98rem; }
+.candidate-card p { font-size: 0.85rem; color: var(--text-muted); margin: 8px 0 0; text-align: left; }
+
+.ballot-option {
+  display: flex; align-items: center; gap: 14px;
+  background: #fff; border: 2px solid var(--border); border-radius: var(--radius);
+  padding: 16px; margin-bottom: 10px; cursor: pointer;
+}
+.ballot-option.selected { border-color: var(--green); background: #F3FBF6; }
+.ballot-option img, .ballot-option .ballot-photo-placeholder {
+  width: 52px; height: 52px; border-radius: 50%; background: var(--bg-soft); flex-shrink: 0;
+}
+.ballot-option .bo-name { font-weight: 700; }
+.ballot-option .bo-manifesto { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; }
+
+.results-bar-row { margin-bottom: 16px; }
+.results-bar-label { display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 6px; }
+.results-bar-track { height: 20px; background: var(--bg-soft); border-radius: 10px; overflow: hidden; }
+.results-bar-fill { height: 100%; background: var(--deep-blue); border-radius: 10px; }
